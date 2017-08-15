@@ -1,5 +1,5 @@
 # CVQT_YoloDetector
-A Demonstration program based on the Yolo2 object detector
+A C++ Demonstration program based on the Yolo2 object detector
 
 The Qt program was build with the following environment:
 1. Qt 5.91
@@ -16,3 +16,8 @@ Required YOLO CNN model files:
 2. yolo.weights
 3. yolo.names
 
+References:
+https://pjreddie.com/darknet/yolo/
+https://arxiv.org/pdf/1612.08242.pdf   (Original paper by Redmon and Farhadi)
+https://github.com/AlexeyAB/yolo-windows
+https://github.com/mrzl/ofxDarknet/blob/master/README.md
