@@ -17,7 +17,7 @@ Required YOLO CNN model files:
 3. yolo.names
 
 References:
-https://pjreddie.com/darknet/yolo/
-https://arxiv.org/pdf/1612.08242.pdf   (Original paper by Redmon and Farhadi)
-https://github.com/AlexeyAB/yolo-windows
-https://github.com/mrzl/ofxDarknet/blob/master/README.md
+1. https://pjreddie.com/darknet/yolo/
+2. https://arxiv.org/pdf/1612.08242.pdf   (Original paper by Redmon and Farhadi)
+3. https://github.com/AlexeyAB/yolo-windows
+4. https://github.com/mrzl/ofxDarknet/blob/master/README.md
