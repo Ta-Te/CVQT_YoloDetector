@@ -1,5 +1,5 @@
 # CVQT_YoloDetector
-A C++ Demonstration program based on the Yolo2 object detector
+A C++ Demonstration program based on the Yolo2 object detector (Qt C++ + OpenCV 3.2)
 
 The Qt program was build with the following environment:
 1. Qt 5.91
