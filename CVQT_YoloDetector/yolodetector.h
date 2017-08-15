@@ -17,7 +17,7 @@
 #include <map>
 #include <iomanip>
 #include <functional>
-#include <time.h>
+#include <ctime>
 #include <thread>
 #include <atomic>
 

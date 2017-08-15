@@ -28,6 +28,7 @@ cv::Mat image_detect;
 QString message;
 QString ImageFileName;
 
+clock_t start, end;
 
 /////////////////////////////////////////////////////////////////////////////////////////
 // Three functions used by the object detection function : YoloDetector::on_actionDetect_Object_triggered()
@@ -99,11 +100,10 @@ YoloDetector::~YoloDetector()
 /////////////////////////////////////////////////////////////////////////////////////////
 void YoloDetector::on_actionDetect_Object_triggered()
 {
-
     // CNN files for Yolo9000 model
-        std::string cfgfile = "yolo.cfg";
-        std::string weightfile = "yolo.weights";
-        std::string namefile = "data/yolo.names";
+    std::string cfgfile = "yolo.cfg";
+    std::string weightfile = "yolo.weights";
+    std::string namefile = "data/yolo.names";
 
 // CNN config file, weight file, and label name file
 //    std::string cfgfile = "yolo-voc.cfg";
@@ -126,12 +126,16 @@ void YoloDetector::on_actionDetect_Object_triggered()
     message = "<< Label file: " + QString::fromUtf8(namefile.c_str()) + " successfully loaded >>";
     ui->textEdit->append(message);
 
+
     // Read the image file
     cv::Mat mat_img = cv::imread(ImageFileName.toStdString().data());
 
-    // Perform object detection and draw boxes on detected objects
+    // Perform object detection and draw boxes on detected objects and calculate the detection time
+    start = clock();
     std::vector<bbox_t> result_vec = detector.detect(mat_img);
-    result_vec = detector.tracking(result_vec);	// comment it - if track_id is not required
+    end = clock();
+    // result_vec = detector.tracking(result_vec);	// comment it - if track_id is not required
+
     draw_boxes(mat_img, result_vec, obj_names);
 
     image_detect = mat_img.clone();  // save detected image for later usage
@@ -162,6 +166,8 @@ void YoloDetector::on_actionDetect_Object_triggered()
         object_num++;
     }
     message = "Total number of detected objects = " + QString::number(object_num,'f',0);
+    ui->textEdit->append(message);
+    message = "Detection time = " + QString::number( float(end - start)/CLOCKS_PER_SEC,'f',4) + " sec";
     ui->textEdit->append(message);
 
     ui->actionSave->setEnabled(true);  // Enable the menu item (save file)
